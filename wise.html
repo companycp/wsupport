@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wise Help Center</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #000;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 5%;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e1e1e1;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      height: 30px;
+    }
+
+    .header-actions a {
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .login {
+      color: #1a1a1a;
+      border: 1px solid #1a1a1a;
+      padding: 6px 18px;
+      border-radius: 70px;
+    }
+
+    .register {
+      background-color: #68b65c;
+      color: #fff;
+      padding: 7px 30px;
+      border-radius: 25px;
+    }
+
+    .center-section {
+      text-align: center;
+      padding: 60px 16px 30px;
+    }
+
+    .center-section h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
+
+    .search-box {
+      width: 90%;
+      max-width: 480px;
+      padding: 14px 20px;
+      font-size: 16px;
+      border: 1px solid #bbb;
+      border-radius: 40px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    .search-box:focus {
+      border-color: #68b65c;
+    }
+
+    .login-support {
+      margin-top: 150px;
+    }
+
+    .login-support p {
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+
+    .login-support button {
+      background-color: #68b65c;
+      border: none;
+      padding: 16px 130px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 35px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-support button:hover {
+      background-color: #57964d;
+    }
+
+    .login-support a {
+      display: block;
+      margin-top: 14px;
+      color: #0a3d62;
+      font-size: 14px;
+      text-decoration: underline;
+    }
+
+    .topics {
+      padding: 0 5% 50px;
+    }
+
+    .topics h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .topic {
+      background-color: #f3f6f4;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .topic:hover {
+      background-color: #e9f2ed;
+    }
+
+    .topic-title {
+      font-weight: 600;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .contact-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .contact-section p {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: normal;
+    }
+
+    .contact-section button {
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 16px;
+      border: 1px solid #1a1a1a;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    footer {
+      background-color: #f3f6f4;
+      padding: 40px 5%;
+    }
+
+    footer h3 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .footer-section {
+      margin-bottom: 32px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      color: #000;
+      font-size: 15px;
+    }
+
+    .footer-links a:hover {
+      color: #68b65c;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 18px;
+      font-size: 20px;
+      margin: 18px 0;
+    }
+
+    .footer-bottom {
+      font-size: 14px;
+      margin-top: 24px;
+      color: #333;
+    }
+
+    .footer-bottom a {
+      text-decoration: underline;
+    }
+
+    /* Upgraded company and team section */
+    .upgraded-team {
+      background-color: #ffffff;
+      padding: 30px 0;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .team-grid a {
+      font-size: 15px;
+      color: #000;
+      text-decoration: underline;
+      display: block;
+      padding: 6px 0;
+      transition: all 0.3s ease;
+    }
+
+    .team-grid a:hover {
+      color: #68b65c;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="wish.jpg" alt="Wise Logo" class="logo">
+  <div class="header-actions">
+    <a href="#" class="login">Log in</a>
+    <a href="#" class="register">Register</a>
+  </div>
+</header>
+
+<div class="center-section">
+  <h1>Hi, how can we help?</h1>
+  <input type="text" class="search-box" placeholder="Search for articles">
+  <div class="login-support">
+    <p>Log in for personalised support</p>
+    <button>Log in</button>
+    <a href="#">Trouble logging in?</a>
+  </div>
+</div>
+
+<div class="topics">
+  <h2>Explore all topics</h2>
+
+  <div class="topic">
+    <div class="topic-title">Sending money</div>
+    <div>Setting up, paying for, editing, and cancelling transfers.</div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-title">Managing your account</div>
+    <div>Setting up your account and getting verified.</div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-title">Holding money</div>
+    <div>Holding balances, setting up Direct Debits, and using Interest & Stocks.</div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-title">Wise card</div>
+    <div>Ordering, activating, spending, and troubleshooting.</div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-title">Receiving money</div>
+    <div>Using your account details to receive money.</div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-title">Wise Business</div>
+    <div>Multi-user access, accounting and using our API.</div>
+  </div>
+</div>
+
+<div class="contact-section">
+  <p>Still need help?</p>
+  <button>Contact us</button>
+</div>
+
+<footer>
+  <!-- Upgraded Company and Team Section -->
+  <div class="footer-section upgraded-team">
+    <h3>Company and Team</h3>
+    <div class="team-grid">
+      <div><a href="#">🏢 Company and team</a></div>
+      <div><a href="#">🔒 Security</a></div>
+      <div><a href="#">📰 Press</a></div>
+      <div><a href="#">💼 Careers</a></div>
+      <div><a href="#">📈 Service status</a></div>
+      <div><a href="#">📊 Investor relations</a></div>
+      <div><a href="#">🤝 Affiliates & partnerships</a></div>
+      <div><a href="#">🆘 Help centre</a></div>
+      <div><a href="#">⭐ Reviews</a></div>
+      <div><a href="#">♿ Accessibility</a></div>
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <h3>Wise Products</h3>
+    <div class="footer-links">
+      <a href="#">International money transfer</a>
+      <a href="#">Wise account</a>
+      <a href="#">International debit card</a>
+      <a href="#">Large amount transfer</a>
+      <a href="#">Receive money</a>
+      <a href="#">Assets</a>
+      <a href="#">Wise Platform</a>
+      <a href="#">Wise Business</a>
+      <a href="#">Business debit card</a>
+      <a href="#">Mass payments</a>
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <h3>Resources</h3>
+    <div class="footer-links">
+      <a href="#">News and blog</a>
+      <a href="#">Privacy policy</a>
+      <a href="#">Currency converter</a>
+      <a href="#">International stock ticker</a>
+      <a href="#">Swift/BIC codes</a>
+      <a href="#">IBAN codes</a>
+      <a href="#">Rate alerts</a>
+      <a href="#">Compare exchange rates</a>
+      <a href="#">Incorporate your company</a>
+      <a href="#">Invoice generator</a>
+      <a href="#">Business Calculators</a>
+    </div>
+  </div>
+
+  <div class="footer-section">
+    <h3>Follow us</h3>
+    <div class="social-icons">
+      <span>Twitter</span>
+      <span>Instagram</span>
+      <span>Facebook<fieldset>
+        
+      </fieldset></span>
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <a href="#">Legal</a>
+    <a href="#">Privacy policy</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Complaints</a>
+    <a href="#">Country site map</a>
+    <a href="#">Modern slavery statement</a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© Wise Payments Limited 2025</p>
+    <p>Wise is authorised by the Financial Conduct Authority under the Electronic Money Regulations 2011, Firm Reference <a href="#">900507</a>, for the issuing of electronic money.</p>
+    <p>All investment services are provided by the respective Wise Assets <a href="#">entity in your location</a>.</p>
+  </div>
+</footer>
+<!-- Smartsupp Live Chat script -->
+<script type="text/javascript">
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '18d4a07b3db3a9528defa22815f802b25e1b434f';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
+</script>
+<noscript> Powered by <a href=“https://www.smartsupp.com” target=“_blank”>Smartsupp</a></noscript>
+</body>
+</html>
